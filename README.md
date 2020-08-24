@@ -22,10 +22,10 @@ A segunda interface, ilustrada abaixo, é para o cliente palpitador. Ele só ter
 ![Image 3](/image/image3.png)
 
 ## Troca de mensagens e funcionamento da aplicação:
-O protocolo de comunicação usado na troca de mensagens de toda a aplicação foi o protocolo TCP.
-Inicialmente quando um novo cliente se conecta, é criado um objeto nomeado no projeto como ServerConnection que representa o cliente em nossa aplicação. Na primeira criação, uma variável do cliente definida como isFirst é atribuída como true, isso ocorre pois o primeiro cliente a se conectar é o primeiro a iniciar desenhando.
-Essa variável também realiza o controle de quem está desenhando, o desenhista sempre terá esta variável como true, já o player que está palpitando, terá esta variável como false.
-E ao desconectar ‘matamos’ esse objeto criado para aquele cliente.
+O protocolo de comunicação usado na troca de mensagens de toda a aplicação foi o protocolo TCP. <br>
+Inicialmente quando um novo cliente se conecta, é criado um objeto nomeado no projeto como ServerConnection que representa o cliente em nossa aplicação. Na primeira criação, uma variável do cliente definida como isFirst é atribuída como true, isso ocorre pois o primeiro cliente a se conectar é o primeiro a iniciar desenhando. <br>
+Essa variável também realiza o controle de quem está desenhando, o desenhista sempre terá esta variável como true, já o player que está palpitando, terá esta variável como false. <br>
+E ao desconectar ‘matamos’ esse objeto criado para aquele cliente. 
 ### -Desenhista:
 Para o desenhista iniciar o desenho ele terá que informar primeiramente o que será desenhado no campo:
 
@@ -48,9 +48,44 @@ Ao realizar um clique, o cliente manda a seguinte mensagem para o servidor:
 -Desenho: o desenho que está sendo feito.<br>
 
 
-A mensagem ao chegar no servidor, é guardada em três listas, uma que contém todas posições X já pintadas, outra as Y e outra as cores pintadas. ListaX[i], ListaY[i] e ListaCor[i] pertence a um pixel pintado na interface.
+A mensagem ao chegar no servidor, é guardada em três listas, uma que contém todas posições X já pintadas, outra as Y e outra as cores pintadas. ListaX[i], ListaY[i] e ListaCor[i] pertence a um pixel pintado na interface. <br>
 Também guardamos no servidor o desenho que está sendo realizado naquele momento. Exclusivamente neste caso, a mesma mensagem com o mesmo formato é enviada a todos os clientes (palpitadores e desenhistas). E na classe ClientHandller é realizado a atribuição das variáveis e chamadas de métodos para os desenhos serem realizados em todos os clientes.
 O desenhista tem a opção de apagar um desenho já realizado, com o botão:
 
 ![Image 6](/image/image6.png)
 
+Ao clicar neste botão o cliente envia para o servidor a seguinte mensagem:<br>
+“apaga”<br>
+O servidor ao identificar a chegada desta mensagem, consulta os últimos elementos presente na lista de posição e monta uma mensagem:<br>
+“apaga | posição X | posição Y | cor” <br>
+
+-Apaga: mensagem indicativa que algo será apagado. <br>
+-Posição X: posição da coordenada X que será apagada. <br>
+-Posição Y: posição da coordenada Y que será apagada. <br>
+-Cor: cor que será apagada. <br>
+
+Antes do servidor enviar a mensagem, ele apaga o último elemento de ambas listas e envia a mensagem para todos os clientes. <br>
+
+Ao chegar no ClientHandler, ele atribui a variáveis da interface gráfica e chama método que realiza a exclusão do último pixel desenhado. <br>
+
+### Palpitador:
+O cliente classificado como palpitador tem o objetivo de acertar o que está sendo desenhado em sua tela. Ele realiza esse palpite pelo campo: <br>
+
+![Image 7](/image/image7.png)
+
+Ao clicar em enviar o cliente manda uma mensagem para o servidor com o seguinte formato: <br>
+
+“palpite | o que ele acha que é” <br>
+
+-Palpite: para indicar que a mensagem é um palpite do cliente. <br>
+-O que ele acha que é: é o que ele acha que está sendo desenhado na tela. <br>
+A mensagem ao chegar no servidor é realizada uma verificação, o servidor sabe o que está sendo desenhado então ele verifica se o palpitador está certo ou não.
+Caso o servidor identifique que o palpitador errou, ele envia só para o palpitador uma mensagem: <br>
+
+“3” <br>
+
+-3: forma proposta para indicar que o palpite está ERRADO. <br>
+
+Com a chegada da mensagem “3” no ClientHandller, ele chama um método que indica que o cliente errou, e esse método mostra uma mensagem na tela apenas para aquele cliente.
+
+![Image 8](/image/image8.png)
