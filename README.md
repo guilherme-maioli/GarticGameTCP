@@ -40,11 +40,11 @@ Ao realizar um clique, o cliente manda a seguinte mensagem para o servidor:
 
 “1 | posição x | posição y | tamanho do pincel | cor | desenho”
 
-<br>-1: padrão atribuído para sempre que a troca de mensagem for para um desenho.
-<br>-Posição X: posição da coordenada X que você está clicando naquele momento na tela.
-<br>-Posição Y: posição da coordenada Y que você está clicando naquele momento na tela.
-<br>-Tamanho do pincel: não colocamos opção de escolha, mantemos um valor padrão de 10.
-<br>-Cor: cor que o desenho está sendo realizado naquele momento.
-<br>-Desenho: o desenho que está sendo feito.
+-1: padrão atribuído para sempre que a troca de mensagem for para um desenho.<br>
+-Posição X: posição da coordenada X que você está clicando naquele momento na tela.<br>
+-Posição Y: posição da coordenada Y que você está clicando naquele momento na tela.<br>
+-Tamanho do pincel: não colocamos opção de escolha, mantemos um valor padrão de 10.<br>
+-Cor: cor que o desenho está sendo realizado naquele momento.<br>
+-Desenho: o desenho que está sendo feito.<br>
 
 
