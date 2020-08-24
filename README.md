@@ -48,3 +48,9 @@ Ao realizar um clique, o cliente manda a seguinte mensagem para o servidor:
 -Desenho: o desenho que está sendo feito.<br>
 
 
+A mensagem ao chegar no servidor, é guardada em três listas, uma que contém todas posições X já pintadas, outra as Y e outra as cores pintadas. ListaX[i], ListaY[i] e ListaCor[i] pertence a um pixel pintado na interface.
+Também guardamos no servidor o desenho que está sendo realizado naquele momento. Exclusivamente neste caso, a mesma mensagem com o mesmo formato é enviada a todos os clientes (palpitadores e desenhistas). E na classe ClientHandller é realizado a atribuição das variáveis e chamadas de métodos para os desenhos serem realizados em todos os clientes.
+O desenhista tem a opção de apagar um desenho já realizado, com o botão:
+
+![Image 6](/image/image6.png)
+
