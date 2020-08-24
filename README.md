@@ -35,3 +35,16 @@ Com isso a interface libera o painel de desenho para iniciar o desenho, a partir
 
 ![Image 5](/image/image5.png)
 
+O desenho ocorre toda vez que clicamos na tela e arrastamos ou apenas clicamos.
+Ao realizar um clique, o cliente manda a seguinte mensagem para o servidor:
+
+“1 | posição x | posição y | tamanho do pincel | cor | desenho”
+
+-1: padrão atribuído para sempre que a troca de mensagem for para um desenho.
+-Posição X: posição da coordenada X que você está clicando naquele momento na tela.
+-Posição Y: posição da coordenada Y que você está clicando naquele momento na tela.
+-Tamanho do pincel: não colocamos opção de escolha, mantemos um valor padrão de 10.
+-Cor: cor que o desenho está sendo realizado naquele momento.
+-Desenho: o desenho que está sendo feito.
+
+
