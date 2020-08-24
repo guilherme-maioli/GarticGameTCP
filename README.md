@@ -89,3 +89,34 @@ Caso o servidor identifique que o palpitador errou, ele envia só para o palpita
 Com a chegada da mensagem “3” no ClientHandller, ele chama um método que indica que o cliente errou, e esse método mostra uma mensagem na tela apenas para aquele cliente.
 
 ![Image 8](/image/image8.png)
+
+Caso o servidor identifique que o palpitador acertou, ele envia uma mensagem: <br>
+“2” <br>
+-2: forma proposta para indica que o palpite está CERTO. <br>
+
+Com a chegada da mensagem “2” no ClientHandller, ele chama um método que indica que o cliente acertou, e esse método mostra uma mensagem na tela apenas para aquele cliente. <br>
+
+![Image 9](/image/image9.png)
+
+Ao clicar no “Ok” desta mensagem de acerto, o cliente reenvia uma mensagem ao servidor: <br>
+“acertou” <br>
+-Acertou: forma escolhida pelo autor de avisar ao servidor para ele realizar a troca de cliente, isto é, quem era o desenhista se torna palpitador e quem era palpitador se tornará desenhista. <br>
+A mensagem ao chegar no servidor, primeiramente troca as variáveis do isFirst dos clientes, que indica quem desenha, após isso monta uma mensagem da seguinte forma: <br>
+
+“ganhou | listaX[1] | listaY[1] | listaX[2] | listaY[2] | ... | listaX[n] | listaY[n]” <br>
+-Ganhou: variável que indica que o jogo terminou.<br>
+-ListaX[n]: todas as posições de X desenhada.<br>
+-ListaY[n]: todas as posições de Y desenhada.<br>
+
+Antes de enviar a mensagem a todos os clientes para limpar suas telas, é realizado a limpeza das três listas e também a limpeza da variável desenho. <br>
+Ao chegar essa mensagem no ClientHandler, os clientes leem a mensagem inteira apagando as posições desenhadas na tela. E após isso é trocado a variável da tela que indica se o cliente é um desenhista ou palpitador. Com isso é chamado o método para liberar opções referente ao o que o cliente é desenhista ou ao palpitador. <br>
+Com isso voltamos a troca de mensagem inicial já descrita, que é quando o cliente realiza um desenho. <br>
+
+## Instalação e teste: 
+Basta executar inicialmente o Server.java e escolher uma porta. <br>
+Após isso executar o Client.java com o mesmo IP do server e mesma porta. <br>
+• O primeiro Client executado começara desenhando <br>
+• O segundo Client começara palpitando <br>
+Ao realizar o acerto do desenho a aplicação automaticamente reiniciará, porém o cliente que estava desenhando se tornará o cliente que irá palpitar e o palpitador tornará o desenhista. <br>
+Observação: A aplicação foi desenvolvida apenas para dois clientes simultâneos.
+
