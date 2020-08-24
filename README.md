@@ -14,3 +14,9 @@ A interface visual do lado do servidor, é uma interface simples onde o usuário
 
 Já a interface visual do cliente, contém várias opções para o usuário e consequentemente cada opção troca uma mensagem diferente entre clientes e servidor.
 Existem duas telas diferentes para os clientes. A primeira é para o cliente desenhista, isto é, o cliente que irá realizar o desenho para seu adversário tentar acertar, a interface desenhista pode ser vista abaixo.
+
+![Image 2](/image/image2.png)
+
+A segunda interface, ilustrada abaixo, é para o cliente palpitador. Ele só terá a opção de inserir no campo de texto o que acha que é o desenho.
+
+![Image 3](/image/image3.png)
